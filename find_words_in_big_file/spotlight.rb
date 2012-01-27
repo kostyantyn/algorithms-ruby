@@ -35,12 +35,4 @@ class Spotlight
   end
 end
 
-result = 1.upto(20).map do
-  start = Time.now
-  Spotlight.new('австралопітек', 'vocabulary.txt').seek
-  Time.now - start 
-end
-
-puts "min: #{result.min}"
-puts "avg: #{result.inject(0.0, :+) / 20}"
-puts "max: #{result.max}"
+p Spotlight.new('австралопітек', 'vocabulary.txt').seek.sort { |a, b| b.length <=> a.length }.first(10)
